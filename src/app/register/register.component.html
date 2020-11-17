@@ -1,0 +1,22 @@
+<div class="row pt-5">
+    <div class="cold-md-6 mx-auto">
+        <div class="center" style="text-align:center">
+
+            <p-card header="Please Register Below!" [style]="{'width': '25rem'}">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://www.seekpng.com/png/detail/73-730482_existing-user-default-avatar.png">
+                </ng-template>
+                <form class="form">
+                    <input [(ngModel)]="registerUserData.email" name="email" type="email" pInputText class="p-inputtext-lg" placeholder="Email" required>
+                    <br>
+                    <br>
+                    <input [(ngModel)]="registerUserData.password" name="password" type="password" pInputText class="p-inputtext-lg" placeholder="Password" required>
+                    <br>
+                    <br>
+                    <p-button (click)="registerUser()" label="Submit" icon="pi pi-check" iconPos="left"></p-button>
+                </form>
+            </p-card>
+        </div>
+
+    </div>
+</div>
