@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,18 +12,28 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginUser: FormGroup
   //records user data
-  loginUserData = {email: ' ', password: ' '}
+
+  data = {email: ' ', password: ' '}; //user variables
   
   //inject auth service and router 
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private builder: FormBuilder,private _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
+    this.loginUser = new FormGroup(
+      {
+        //user fields
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required)
+      })
   }
 
-  loginUser() {
+  handleSubmit() {
+    
     //calls the auth service for the user data
-    this._auth.loginUser(this.loginUserData)
+    this.data = this.loginUser.value;
+    this._auth.registerUser(this.data)
     //subscribes to either the login or error. 
       .subscribe(
         res => {

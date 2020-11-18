@@ -1,22 +1,35 @@
-<div class="row pt-5">
-    <div class="cold-md-6 mx-auto">
-        <div class="center" style="text-align:center">
+<div class="card.align-item-md-center" style="width: 40rem;">
+    <img class="card-img-top" src="https://www.seekpng.com/png/detail/73-730482_existing-user-default-avatar.png">
+    <div class="card-body">
+        <div class="container">
+            <h2>Please Login Below!</h2>
+            <div>
+                <form [formGroup]="loginUser" (ngSubmit)="loginUser.valid && handleSubmit()">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" formControlName="email"
+                            placeholder="Enter Email"
+                            [ngClass]="{'is-invalid': loginUser.get('email').touched && loginUser.get('email').invalid}">
+                        <span class="invalid-feedback">
+                            <span *ngIf="loginUser.get('email').hasError('required')">Email can't be blank.</span>
+                        </span>
+                    </div>
 
-            <p-card header="Please Login Below!" [style]="{'width': '25rem'}">
-                <ng-template pTemplate="header">
-                    <img alt="Card" src="https://www.seekpng.com/png/detail/73-730482_existing-user-default-avatar.png">
-                </ng-template>
-                <form class="form">
-                    <input [(ngModel)]="loginUserData.email" name="email" type="email" pInputText class="p-inputtext-lg" placeholder="Email" required>
-                    <br>
-                    <br>
-                    <input [(ngModel)]="loginUserData.password" name="password" type="password" pInputText class="p-inputtext-lg" placeholder="Password" required>
-                    <br>
-                    <br>
-                    <p-button (click)="loginUser()" label="Submit" icon="pi pi-check" iconPos="left"></p-button>
+                    <div class="form-group">
+                        <label class="col-form-label">Password</label>
+                        <input type="Enter Password" class="form-control" [ngClass]="{ 'is-invalid': loginUser.get('password').touched 
+                    && loginUser.get('password').invalid }" placeholder="Enter Password" formControlName="password" />
+                        <div class="invalid-feedback">
+                            <div>Password can't be blank</div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button class="btn btn-primary" [disabled]="loginUser.invalid">Register</button>
+                    </div>
                 </form>
-            </p-card>
+            </div>
         </div>
-
     </div>
 </div>

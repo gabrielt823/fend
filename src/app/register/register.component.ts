@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,27 +12,46 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerUserData = {email: ' ', password: ' '}; //user variables
+  //add form group
+  registerUser: FormGroup
+  //eAdded boolean value to confirm event addition
 
-  //"inject the auth service", "inject the router for home navigation"
-  constructor(private _auth: AuthService, private _router: Router) { }
+  data = {email: ' ', password: ' '}; //user variables
 
-  ngOnInit(): void {}
+  constructor (private _registerUrl: AuthService, private router: Router) { }
 
-  registerUser(){
-    //passes the registeruserData when clicking submit
-    this._auth.registerUser(this.registerUserData)
-    //subscribe to the observable to either get response or error
+  
+
+  ngOnInit(): void {
+    //
+    this.registerUser = new FormGroup(
+      {
+        //user fields
+        email: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required)
+      })
+  }
+
+  handleSubmit(){
+    console.log(this.registerUser.value);
+
+    this.data = this.registerUser.value;
+    this._registerUrl.registerUser(this.data)
     .subscribe(
       res => {
         console.log(res), //200
         //sets an item with the key token, and stores in the local storage
         localStorage.setItem('token', res.token)
         //takes user to home
-        this._router.navigate([''])
+        this.router.navigate(['events'])
 
       },
       err => console.log(err) //401
     )
+
   }
-} 
+
+
+}
+
+

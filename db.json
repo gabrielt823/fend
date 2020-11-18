@@ -1,0 +1,68 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "title": "Angular Training",
+      "desc": "Training Session",
+      "time": "Monday 2:30PM",
+      "location": "Zoom Meeting",
+      "img": "https://cdn.searchenginejournal.com/wp-content/uploads/2019/04/the-seo-guide-to-angular-760x400.png"
+    },
+    {
+      "id": 1,
+      "title": "NodeJS Training",
+      "desc": "Training Session",
+      "time": "Tuesday at 3:30PM",
+      "location": "Zoom Meeting",
+      "img": "https://i2.wp.com/blog.logrocket.com/wp-content/uploads/2019/10/nodejs.png?fit=1240%2C700&ssl=1"
+    },
+    {
+      "id": 2,
+      "title": "Javascript Training",
+      "desc": "Training Session",
+      "time": "Wednesday at 11:30AM",
+      "location": "Zoom Meeting",
+      "img": "https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
+    },
+    {
+      "id": 3,
+      "title": "DevOps Training",
+      "desc": "Training Session",
+      "time": "Thursday at 12:30PM",
+      "location": "Zoom Meeting",
+      "img": "https://www.smartsheet.com/sites/default/files/IC-DevOps-Venn-Diagram.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Thanksgiving Dinner",
+      "desc": "Training Session",
+      "time": "Thursday at 6:30PM",
+      "location": "Home",
+      "img": "https://media.swncdn.com/via/5333-thanksgiving.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Black Friday Shopping",
+      "desc": "Training Session",
+      "time": "Thursday at 11:30PM",
+      "location": "Best Buy",
+      "img": "https://gray-kwch-prod.cdn.arcpublishing.com/resizer/qG_WzOjqfby_dwTmqGdRiyoxwzA=/1200x675/smart/cloudfront-us-east-1.images.arcpublishing.com/gray/RFP3MM27G5JLXEF5EIJ5JNMVLM.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Marvel Marathon",
+      "desc": "Training Session",
+      "time": "Saturday 2:00PM",
+      "location": "AMC Theatre",
+      "img": "https://s.studiobinder.com/wp-content/uploads/2019/12/The-Best-Order-to-Watch-Marvel-Movies-Featured-StudioBinder.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Go to Mass",
+      "desc": "Training Session",
+      "time": "Sun at 10:00AM",
+      "location": "Church",
+      "img": "https://media.swncdn.com/cms/CW/faith/42359-church-ThinkstockPhotos-139605937.1200w.tn.jpg"
+    }
+  ]
+}

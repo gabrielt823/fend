@@ -1,26 +1,75 @@
+<br>
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-8">
-        <h1>Add an Event</h1>
-       <form>
+  <h2>Create an Event</h2>
+  <div>
+      <form [formGroup]="addForm" (ngSubmit)="addEventHandler()"> 
         <div class="form-group">
-            <label for="">Name:</label>
-            <input type="text" class="form-control" id="" placeholder="Event Name">
-        </div>
-        <div class="form-group">
-            <label for="">Description</label>
-            <textarea class="form-control" id="" placeholder="Event Description"rows="3"></textarea>
+          <label for="" class="col-form-label">Event Title</label>
+            <input type="text" class="form-control" 
+            [ngClass]="{ 'is-invalid': addForm.get('title').touched 
+              && addForm.get('title').invalid }"
+            placeholder="Title" formControlName="title"/>  
+            <div class="invalid-feedback">
+              <div>Title is Required.</div>
+            </div>
           </div>
+
         <div class="form-group">
-            <label for="">Location</label>
-            <input type="text" class="form-control" id="" placeholder="Event Location">
+          <label class="col-form-label">Event Desc</label>
+            <input type="text" class="form-control" 
+            [ngClass]="{ 'is-invalid': addForm.get('desc').touched 
+            && addForm.get('desc').invalid }"
+            placeholder="Description" formControlName="desc"
+            />
+            <div class="invalid-feedback">
+              <div>Description is Required.</div>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="col-form-label">Event Date & Time</label>
+            <input type="text" class="form-control" 
+            [ngClass]="{ 'is-invalid': addForm.get('time').touched 
+            && addForm.get('time').invalid }"
+            placeholder="Time" formControlName="time"
+            />
+            <div class="invalid-feedback">
+              <div>Date & Time is Required.</div>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="col-form-label">Event Location</label>
+            <input type="text" class="form-control" 
+            [ngClass]="{ 'is-invalid': addForm.get('location').touched 
+            && addForm.get('location').invalid }"
+            placeholder="Location" formControlName="location"
+            />
+            <div class="invalid-feedback">
+              <div>Location is Required.</div>
+            </div>
+          </div>
+
+        <div class="form-group ">
+          <label class="col-form-label">Event Image</label>
+          <div>
+            <input type="text" class="form-control" 
+            [ngClass]="{ 'is-invalid': addForm.get('img').touched 
+            && addForm.get('img').invalid }"
+            placeholder="Event Image URL" formControlName="img"/>
+            <div class="invalid-feedback" 
+            *ngIf="addForm.get('img').touched && addForm.get('img').invalid" >
+              <div *ngIf="addForm.get('img').errors?.required">Image is Required.</div>
+            </div>
+          </div>
         </div>
-        <div class="form-group"> <!-- Date input -->
-          <label class="control-label" for="date">Date</label>
-          <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-        </div>
-        <button type="submit" class="btn btn-primary">Create Event</button>
-       </form>
-       </div>
+  
+        <div class="alert alert-success" *ngIf="eAdded">Event has been Added.</div>
+  
+        <div class="form-group">
+            <button class="btn btn-primary" 
+            [disabled]="addForm.invalid">Submit Event</button>
+          </div>
+      </form>
     </div>
   </div>
